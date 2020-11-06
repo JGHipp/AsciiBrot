@@ -2,7 +2,7 @@
 Renders the Mandelbrot Set in your terminal!
 ## Examples
 <pre> ./mandel -i 9000 -s 0.75 -1.1465486666 0.27618133333 -1.114949733 0.2524821333 </pre>
-Output:
+<b>Output</b>:
 <pre>
 View dimensions: 120x40 chars (scale factor: 0.75)
 Max. iterations: 2000
@@ -38,5 +38,5 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$.$
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 </pre>
-Expected:
+<b>Expected</b>:<br />
 ![Screenshot](https://raw.githubusercontent.com/JGHipp/AsciiBrot/master/expected.png)
