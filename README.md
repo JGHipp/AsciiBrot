@@ -39,4 +39,4 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 </pre>
 Expected:
-[!Screenshot](https://raw.githubusercontent.com/JGHipp/AsciiBrot/master/expected.png)
+![Screenshot](https://raw.githubusercontent.com/JGHipp/AsciiBrot/master/expected.png)
