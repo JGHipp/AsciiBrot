@@ -31,9 +31,9 @@ typedef struct complexNumber
 	double r, i;
 } cnum;
 
-void printInum(cnum num){ std::cout << "(" << num.r << (num.i < 0 ? " - " : " + ") << (num.i < 0 ? -num.i : num.i) << "i)"; }
-cnum addInums(cnum a, cnum b) { return cnum { a.r + b.r, a.i + b.i }; }
-cnum mulInums(cnum a, cnum b) { return cnum { a.r * b.r - a.i * b.i, a.r * b.i + b.r * a.i }; }
+void printCNum(cnum num){ std::cout << "(" << num.r << (num.i < 0 ? " - " : " + ") << (num.i < 0 ? -num.i : num.i) << "i)"; }
+cnum addCNums(cnum a, cnum b) { return cnum { a.r + b.r, a.i + b.i }; }
+cnum mulCNums(cnum a, cnum b) { return cnum { a.r * b.r - a.i * b.i, a.r * b.i + b.r * a.i }; }
 
 // Default values
 cnum topLeft = {-2, 1}, bottomRight = {1, -1};
@@ -44,7 +44,7 @@ int nIterations(int maxIterations, cnum clx)
 {
 	cnum z = {0, 0};
 	int iterations;
-	for(iterations = 0; iterations < maxIterations && z.r <= 2; iterations++) z = addInums(mulInums(z, z), clx);
+	for(iterations = 0; iterations < maxIterations && z.r <= 2; iterations++) z = addCNums(mulCNums(z, z), clx);
 	return iterations;
 }
 
@@ -61,8 +61,8 @@ char iterationToChar(int iterations, int maxIterations)
 // Render the Mandelbrot set!
 void renderSet(int maxIterations, cnum topLeft, cnum bottomRight)
 {
-	std::cout << "Top left corner: "; printInum(topLeft); 
-	std::cout << ", bottom right corner: "; printInum(bottomRight); 
+	std::cout << "Top left corner: "; printCNum(topLeft); 
+	std::cout << ", bottom right corner: "; printCNum(bottomRight); 
 	std::cout << std::endl;
 	double rStep = (bottomRight.r - topLeft.r) / bufferWidth;
 	double iStep = (bottomRight.i - topLeft.i) / bufferHeight;
@@ -102,7 +102,7 @@ void dialogue()
 				<< std::endl;
 	}
 	inputVar("Enter the maximum number of iterations: ", maxIterations);
-	inputVar("Enter the bufferScale of the view, defaulted at 120x40 (Ex. 1.0): ", bufferScale);
+	inputVar("Enter the scale factor for the view, (default view is 120x40): ", bufferScale);
 }
 
 void usage()
