@@ -2,6 +2,7 @@
 Renders the Mandelbrot Set in your terminal!
 ## Examples
 <pre> ./mandel -i 9000 -s 0.75 -1.1465486666 0.27618133333 -1.114949733 0.2524821333 </pre>
+<i> Renders the set from (-1.1465 + 0.2762i) to (-1.1149 + 0.2525i) with 9,000 iterations and a scale factor of 0.75 from the original 120x40 character display </i><br/> 
 <b>Output</b>:
 <pre>
 View dimensions: 120x40 chars (scale factor: 0.75)
