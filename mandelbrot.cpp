@@ -53,17 +53,20 @@ char iterationToChar(int iterations, int maxIterations)
 {
 	const char charMap[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
 	const int nChars = 70;
-	double ratio = (double) (nChars - 1) / (double) maxIterations;
-	int index = (int) ((double) iterations * ratio);
-	return charMap[index];
+	// Simple mapping. Incosistent from various max iterations. Plan to implement histogram mapping eventualy
+	return charMap[(int)((double) iterations / (double) maxIterations * (nChars - 1))];
 }
-
+ 
 // Render the Mandelbrot set!
 void renderSet(int maxIterations, cnum topLeft, cnum bottomRight)
 {
 	std::cout << "Top left corner: "; printCNum(topLeft); 
 	std::cout << ", bottom right corner: "; printCNum(bottomRight); 
-	std::cout << std::endl;
+	std::cout << std::endl; 
+	if(topLeft.r > bottomRight.r) 
+		std::cout << "The real component of the top-left corner is greater than the bottom-right! Still rendering..." << std::endl;
+	else if(topLeft.i < bottomRight.i) 
+		std::cout << "The imaginary component of the top-left corner is less than the bottom-right! Still rendering..." << std::endl; 
 	double rStep = (bottomRight.r - topLeft.r) / bufferWidth;
 	double iStep = (bottomRight.i - topLeft.i) / bufferHeight;
 	for(int y = 0; y < bufferHeight; y++)
@@ -95,11 +98,6 @@ void dialogue()
 		inputVar("  Imaginery: ", bri);
 		topLeft = {tlr, tli};
 		bottomRight = {brr, bri};
-		if(tlr > brr)
-			std::cout << "The real component of the top-left corner is less than the bottom-right! Still rendering..." << std::endl;
-		else if(tli < bri)
-			std::cout << "The imaginary component of the top-left corner is less than the bottom-right! Still rendering..." 
-				<< std::endl;
 	}
 	inputVar("Enter the maximum number of iterations: ", maxIterations);
 	inputVar("Enter the scale factor for the view, (default view is 120x40): ", bufferScale);
@@ -112,7 +110,7 @@ void usage()
 				 "i)] to [max_real + min_imaginary(i)].\n	Default: (-2 + 1i) to (1 -1i).\n	-h	Displays this usage.\n"
 				 "	-D	Dialogue mode. All other arguments are ignored.\n	-i	Specifies the max number of iterations. De"
 				 "fault is 150.\n	-d	Specifies the dimensions of the character view plane. Default is 120x40.\n	-s	Sp"
-				 "ecifies a scale to be applied to the view (Ex. 1.0, 1.3).\n";
+				 "ecifies a scale to be applied to the view (Ex. 1.0, 1.3)." << std::endl;
 	exit(0);
 }
 
